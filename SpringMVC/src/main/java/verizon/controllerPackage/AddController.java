@@ -17,9 +17,9 @@ public class AddController {
 		 
 		int n1=Integer.parseInt(request.getParameter("num1"));
 		int n2=Integer.parseInt(request.getParameter("num2"));
-		//int n3=n1+n2;
+		//int n3=n1+n2;  // directly adding the numbers
 		
-		AddService service1=new AddService();
+		AddService service1=new AddService();//calling service to add the numbers
 		int n3=service1.add(n1, n2);
 		
 
