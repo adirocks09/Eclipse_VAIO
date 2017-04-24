@@ -1,0 +1,4 @@
+verizon\configurationPackage\AddConfig.class
+verizon\servicePackage\AddService.class
+verizon\controllerPackage\AddController.class
+verizon\initializerPackage\WebInitializer.class
