@@ -26,8 +26,8 @@ public class AddController {
 		ModelAndView view=new ModelAndView();
 		
 		view.addObject("sum",n3);
-		view.setViewName("display.jsp");
-		//view.setViewName("display2");
+		//view.setViewName("display.jsp");
+		view.setViewName("display2");
 		
 		
 

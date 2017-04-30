@@ -9,14 +9,14 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan({"verizon"})
 public class AddConfig {
 	
-//	@Bean
-//	public InternalResourceViewResolver viewResolver(){
-//		
-//		InternalResourceViewResolver vr=new InternalResourceViewResolver();
-//		vr.setPrefix("/WEB-INF/");
-//		vr.setSuffix(".jsp");
-//		
-//		return vr;
-//	}
+	@Bean
+	public InternalResourceViewResolver viewResolver(){
+		
+		InternalResourceViewResolver vr=new InternalResourceViewResolver();
+		vr.setPrefix("/WEB-INF/");
+		vr.setSuffix(".jsp");
+		
+		return vr;
+	}
 
 }
