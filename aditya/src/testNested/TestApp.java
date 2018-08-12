@@ -1,6 +1,6 @@
-package testNestedClass;
+package testNested;
 
-import testNestedClass.OuterDemo.PublicDynamicInnerClass;
+import testNested.OuterDemo.PublicDynamicInnerClass;
 
 public class TestApp {
 
@@ -8,7 +8,6 @@ public class TestApp {
 	      // Instantiating the outer class and accessing private nested classes by Calling Instance method on Outer Class
 		   OuterDemo outer = new OuterDemo();
   	       outer.display_Inner();
-	    
   	       //accessing private nested classes by Calling Static method on Outer Class
   	       OuterDemo.displayInnerStatic();
   	      
