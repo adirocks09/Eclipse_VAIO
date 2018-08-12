@@ -4,11 +4,9 @@ public class ThreadApp {
 
 	public static void main(String[] args) {
 
-		/*
 		Person p = new Person(10,"Ram");   // Threads calling same object
 		Thread1 ob1=new Thread1(p,"one.one");
 		Thread2 ob2=new Thread2(p,"one.two");
-		*/
 		
 		/*
 		Person p1 = new Person(10,"Ram");    // Threads calling different objects
@@ -29,11 +27,11 @@ public class ThreadApp {
 		Thread3 ob32=new Thread3("three.two");   
 		*/
 		
-		
+		/*
 		Person p4 = new Person(30,"GhanShyam");   // Threads calling same object
 		Thread4 ob5=new Thread4(p4,"four.one");
 		Thread4 ob6=new Thread4(p4,"four.two");
-		
+		*/
 		
 		/*
 		Person p5 = new Person(15,"Sonu");   // Threads calling different references for the same object, result is same as above

@@ -17,6 +17,7 @@ public class Thread2 implements Runnable {
 	@Override
 	public void run() {
 		int i = 1;
+		
 		synchronized (p2) {
 			while (i < 10) {
 				System.out.println(p2.getAge());
@@ -36,6 +37,7 @@ public class Thread2 implements Runnable {
 			System.out.println("Thread 2 :releasing lock on Person Object");
 			System.out.println("Thread 2 : Synchronised Block  completed");
 		}
+
 		
 		System.out.println("Thread 2 : Run Method for completed");
 
