@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vzw.vo.RequestVO;
 import com.vzw.vo.ResponseVO;
+import com.vzw.vo.SampleBean;
 
 @RestController
 @RequestMapping("/api")
@@ -20,6 +21,11 @@ public class RestApiController {
 	private RequestVO requestVO; // Instance is not created 
 	
 	RequestVO objectRequestVO = new RequestVO();
+	
+	@Autowired
+	private SampleBean sb;
+	
+	//private SampleBean sb2;
 	
 	@RequestMapping("/hello")
 	public String greet(){
@@ -36,6 +42,8 @@ public class RestApiController {
 		response.setPetName(request.getName().concat(" Kumar"));
 		response.setOldAge(request.getAge()+3);
 		response.setIncreasedSalary(request.getSalary()*2);
+		System.out.println(sb.getName());
+		System.out.println(sb.getSp().getEmpId());
 		return response;
 	}
 }

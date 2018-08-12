@@ -1,8 +1,8 @@
 package com.vzw.vo;
 
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
+@Component
 public class RequestVO {
 	private String name;
 	private int age;
