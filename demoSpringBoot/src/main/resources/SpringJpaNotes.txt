@@ -30,6 +30,9 @@ public User() {  // Default Constructor is mandatory for entity object
 		super();
 	}
 
+Classes annotated with @Embeddable
+1. must implement Serializable interface
+2. must not have members or Columns annotated with @Id
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 @OneToOne(refrences Object) and @ManyToOne(refrences Object)
