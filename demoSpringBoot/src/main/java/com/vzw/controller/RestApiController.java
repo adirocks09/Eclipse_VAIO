@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vzw.service.JpaService;
+import com.vzw.vo.JpaResponseVO;
 import com.vzw.vo.RequestVO;
 import com.vzw.vo.ResponseVO;
 import com.vzw.vo.SampleBean;
@@ -27,6 +29,9 @@ public class RestApiController {
 	
 	//private SampleBean sb2;
 	
+	@Autowired
+	private JpaService jpaService;
+	
 	@RequestMapping("/hello")
 	public String greet(){
 		System.out.println(autowiredRequestVO.toString()); //Works FIne!!!!....because of Autowiring , An instance is created and it doesnt give null pointer exception
@@ -46,4 +51,12 @@ public class RestApiController {
 		System.out.println(sb.getSp().getEmpId());
 		return response;
 	}
+	
+	@RequestMapping(value = "/viewEntity", method = RequestMethod.POST)
+	public @ResponseBody JpaResponseVO viewEntity(){
+		System.out.println("View Entity");
+		JpaResponseVO response = jpaService.getEntityDetails();
+		return response;
+	}
+	
 }

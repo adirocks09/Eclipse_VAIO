@@ -1,0 +1,116 @@
+#spring.jpa.hibernate.ddl-auto=create 
+
+it creates all the tables during start but does NOT executes drop command after the application stops to delete the tables
+
+Application StartUP:
+Hibernate: drop table aadhar if exists
+Hibernate: create table aadhar (aadhar_id integer not null, city varchar(255), dob date, primary key (aadhar_id))
+
+Application Stop
+NO COMMANDS
+
+spring.jpa.hibernate.ddl-auto=create-drop
+
+it creates all the tables during start and after the application stops it executes drop command also to delete the tables
+
+Application StartUP:
+Hibernate: drop table aadhar if exists
+Hibernate: create table aadhar (aadhar_id integer not null, city varchar(255), dob date, primary key (aadhar_id))
+
+Application Stop
+Hibernate: drop table aadhar if exists
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+@ComponentScan(basePackages="com")// for scanning and registering component and service beans
+@EnableJpaRepositories(basePackages="com.vzw.repository") // for scanning and registering repository beans
+@EntityScan(basePackages="com.vzw.entity")// for scanning and registering entity beans
+
+public User() {  // Default Constructor is mandatory for entity object
+		super();
+	}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+@OneToOne(refrences Object) and @ManyToOne(refrences Object)
+
+@ManyToMany(refrences collection) 
+Hibernate: create table user_bike_list (user_u_id integer not null, bike_list_v_id integer not null)
+Hibernate: alter table user_bike_list add constraint FKt93he8wmddloowxvabkfqv6et foreign key (bike_list_v_id) references vehicle
+Hibernate: alter table user_bike_list add constraint FKa9s6mdb2fexrrrb2isvqxubag foreign key (user_u_id) references user
+
+@OneToMany(refrences collection) : [Only Difference from @ManyToMany :unique (car_list_v_id)]
+Hibernate: create table user_car_list (user_u_id integer not null, car_list_v_id integer not null)
+Hibernate: alter table user_car_list add constraint UK_pxs0sx7ddmxgk62786bmheliy unique (car_list_v_id)
+Hibernate: alter table user_car_list add constraint FKnw5b6ijjisrljarpdinijo9rv foreign key (car_list_v_id) references vehicle
+Hibernate: alter table user_car_list add constraint FKi8hlryhp5ss62rvqn3ov40af6 foreign key (user_u_id) references user
+
+
+@OneToMany(Separate tables are created for mapping User and Bike or the mapping can be done in the vehicle table)
+@ManyToMany(Separate tables has to be created for mapping User and Bike , There is no other option)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+@OneToMany(Separate tables are created for mapping User and Bike ,  
+                                                                   1. UserId and BikeId are foreign keys 
+                                                                   2. BikeId is also unique in that table)
+
+User Entity : @OneToMany
+              List <Bike> bikeList 
+
+Hibernate: drop table aadhar if exists
+Hibernate: drop table bike if exists
+Hibernate: drop table car if exists
+Hibernate: drop table user if exists
+Hibernate: drop table user_bike_list if exists
+Hibernate: drop table user_car_list if exists
+
+Hibernate: create table aadhar (aadhar_id integer not null, city varchar(255), dob varchar(255), primary key (aadhar_id))
+
+Hibernate: create table bike (bike_id integer not null, bike_name varchar(255), user_u_id integer, primary key (bike_id))
+
+Hibernate: create table car (car_id integer not null, car_name varchar(255), primary key (car_id))
+
+Hibernate: create table user (u_id integer not null, age integer, u_name varchar(255), aadhar_aadhar_id integer, primary key (u_id))
+Hibernate: alter table user add constraint FKkple5gbld1hknodt4f4wg62r2 foreign key (aadhar_aadhar_id) references aadhar
+
+
+Hibernate: create table user_bike_list (user_u_id integer not null, bike_list_bike_id integer not null)
+Hibernate: alter table user_bike_list add constraint UK_awp3hnw2bm6suvdcx2jn8f2ps unique (bike_list_bike_id)
+Hibernate: alter table user_bike_list add constraint FKdc4ayg63cl4typsfcpiu9rqqp foreign key (bike_list_bike_id) references bike
+Hibernate: alter table user_bike_list add constraint FKa9s6mdb2fexrrrb2isvqxubag foreign key (user_u_id) references user
+
+Hibernate: create table user_car_list (user_u_id integer not null, car_list_car_id integer not null)
+Hibernate: alter table user_car_list add constraint FKidjcds25y0h7sodq8fnjk8rnq foreign key (car_list_car_id) references car
+Hibernate: alter table user_car_list add constraint FKi8hlryhp5ss62rvqn3ov40af6 foreign key (user_u_id) references user
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+OneToMany(mappedBy="user")(Separate tables are NOT created for mapping User and Bike, The mapping is done in the Bike table with user_id as a foreign key )
+
+User Entity : @OneToMany(mappedBy="user") 
+              List <Bike> bikeList
+			  
+Bike Entity : @ManyToOne
+              User user			  
+
+
+Hibernate: drop table aadhar if exists
+Hibernate: drop table bike if exists
+Hibernate: drop table car if exists
+Hibernate: drop table user if exists
+Hibernate: drop table user_car_list if exists
+
+
+Hibernate: create table aadhar (aadhar_id integer not null, city varchar(255), dob varchar(255), primary key (aadhar_id))
+
+Hibernate: create table car (car_id integer not null, car_name varchar(255), primary key (car_id))
+
+Hibernate: create table user (u_id integer not null, age integer, u_name varchar(255), aadhar_aadhar_id integer , primary key (u_id))
+Hibernate: alter table user add constraint FKkple5gbld1hknodt4f4wg62r2 foreign key (aadhar_aadhar_id) references aadhar
+
+Hibernate: create table bike (bike_id integer not null, bike_name varchar(255), user_u_id integer, primary key (bike_id))
+Hibernate: alter table bike add constraint FKady9viu3vsfxrvwdoeo96mi19 foreign key (user_u_id) references user
+
+Hibernate: create table user_car_list (user_u_id integer not null, car_list_car_id integer not null)
+Hibernate: alter table user_car_list add constraint FKidjcds25y0h7sodq8fnjk8rnq foreign key (car_list_car_id) references car
+Hibernate: alter table user_car_list add constraint FKi8hlryhp5ss62rvqn3ov40af6 foreign key (user_u_id) references user

@@ -2,7 +2,7 @@ package com.vzw.vo;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component  
 public class SampleBean2 {
 
 	private int empId;
