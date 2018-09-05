@@ -1,5 +1,7 @@
 package com.vzw.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,10 +10,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vzw.service.JpaService;
+import com.vzw.vo.Employee;
 import com.vzw.vo.JpaResponseVO;
 import com.vzw.vo.RequestVO;
 import com.vzw.vo.ResponseVO;
-import com.vzw.vo.SampleBean;
+import com.vzw.beans.SampleBean;
 
 @RestController
 @RequestMapping("/api")
@@ -58,5 +61,27 @@ public class RestApiController {
 		JpaResponseVO response = jpaService.getEntityDetails();
 		return response;
 	}
+	
+	@RequestMapping(value = "/viewJdbc", method = RequestMethod.POST)
+	public @ResponseBody List<Employee> viewJdbc(){
+		System.out.println("View Entity");
+		List<Employee> response = jpaService.viewCallJDBCTempalate();
+		return response;
+	}
+	
+	@RequestMapping(value = "/addJdbc", method = RequestMethod.POST)
+	public @ResponseBody List<Employee> addJdbc(@RequestBody Employee emp){
+		System.out.println("View Entity");
+		List<Employee> response = jpaService.addCallJDBCTempalate(emp);
+		return response;
+	}
+	
+	@RequestMapping(value = "/addNamedJdbc", method = RequestMethod.POST)
+	public @ResponseBody List<Employee> viewJdbc(@RequestBody Employee emp){
+		System.out.println("View Entity");
+		List<Employee> response = jpaService.addCallNamedJDBCTempalate(emp);
+		return response;
+	}
+	
 	
 }

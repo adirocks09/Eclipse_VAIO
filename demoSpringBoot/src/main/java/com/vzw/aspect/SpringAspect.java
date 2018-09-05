@@ -15,7 +15,7 @@ public class SpringAspect {
 	    public void myadvice(JoinPoint jp)//it is advice (before advice)  
 	    {  
 	        System.out.println("Spring AOP");  
-	        //System.out.println("Method Signature: "  + jp.getSignature());  
+	        System.out.println("Method Signature: "  + jp.getSignature());  
 	    }  
 	
 }

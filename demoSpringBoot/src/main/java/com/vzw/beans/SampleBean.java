@@ -1,4 +1,4 @@
-package com.vzw.vo;
+package com.vzw.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
