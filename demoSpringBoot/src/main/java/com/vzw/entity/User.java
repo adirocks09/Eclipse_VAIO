@@ -1,7 +1,9 @@
 package com.vzw.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -37,13 +39,11 @@ public class User {
 	//@OneToMany
 	//@OneToMany(mappedBy="user" , fetch=FetchType.LAZY) //By Default the Collection is Lazy only
 	@OneToMany(mappedBy="user" , fetch=FetchType.EAGER)
+	//@ElementCollection
 	private List<Bike> bikeList;
 	
 	@ManyToMany
 	private List<Car> carList;
-	
-//	@Embedded
-//	private List<Accesories> accesoryList;
 	
 	
 	public int getUserId() {
@@ -90,12 +90,5 @@ public class User {
 		this.carList = carList;
 	}
 
-	
-//	public List<Accesories> getAccesoryList() {
-//		return accesoryList;
-//	}
-//	public void setAccesoryList(List<Accesories> accesoryList) {
-//		this.accesoryList = accesoryList;
-//	}
-	
+
 }
