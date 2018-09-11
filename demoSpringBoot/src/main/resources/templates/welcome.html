@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Welcome</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- <link rel="stylesheet" type="text/css" -->
+<!-- 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript"  src="/js/MyJavascript.js"></script>
+	
+
+</head>
+<body>
+		<div class="starter-template">
+			<h1>Spring Boot Web Thymeleaf Example</h1>
+			<h2>
+				<span th:text="'Message: ' + ${message}"></span>
+			</h2>
+			<button onClick=myFunction(5)>Set Value</button>
+			<input id="valueBox" value=""/>
+			<br/><br/>
+		</div>
+		
+		<h2>AJAX CALL</h2><br/>
+				
+		
+		<div>
+            Name:  <input type="text"  id="name" name="txtboxName" value=""> <br/><br/>
+            Age:   <input type="text"  id="age"  name="txtboxAge" value=""> <br/><br/>
+            Salary :   <input type="text"  id="salary"  name="txtboxSalary" value=""> <br/><br/>
+            <input type="button" value="Make Ajax Call" onClick=makeAjaxCall()><br/><br/>
+            
+		</div>
+		
+		<div>
+            Updated Name:  <input type="text"  id="updatedName"  value=""> <br/><br/>
+            Updated Age:   <input type="text"  id="updatedAge"  value=""> <br/><br/>
+            Updated Salary :   <input type="text"  id="updatedSalary"  value=""> <br/><br/>
+		</div>
+		
+		<h2>GET v/s POST</h2><br/>
+<!-- 		Difference between post and get is the request parametres does not appear in the url -->
+<!-- 		The server side code is same for both the methods -->
+<!-- 		both the form has action sum which hits the sum method in ViewController.java -->
+		
+		<form action ="/sum" method="post">
+			 1st Number:  <input type="text"  name="num1"  value=""> <br/><br/>
+		     2nd Number:  <input type="text"  name="num2"  value=""> <br/><br/>
+		     <input type="submit" value="Http POST Addition"><br/><br/>
+		</form>
+		
+		<form action ="/sum" method="get">
+		     1st Number:  <input type="text"  name="num1"  value=""> <br/><br/>
+		     2nd Number:  <input type="text"  name="num2"  value=""> <br/><br/>
+		     <input type="submit" value="Http GET Addition"><br/><br/>
+		</form>
+		
+		<h2>PAGE REDIRECTION</h2><br/>
+		<form action ="/pageRedirect" method="get">
+		     <input type="submit" value="Page ReDirect"><br/><br/>
+		</form>
+		
+		
+</body>
+</html>
