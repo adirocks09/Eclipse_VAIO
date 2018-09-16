@@ -1,5 +1,5 @@
 function myFunction(p){
-	console.log("inside JS Function : myFunction")
+	console.log("MyJavaScript.js : inside JS Function : myFunction")
 	document.getElementById("valueBox").value=p*p;
 }
 
