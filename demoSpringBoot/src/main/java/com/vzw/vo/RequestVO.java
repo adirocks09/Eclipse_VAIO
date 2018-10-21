@@ -8,6 +8,17 @@ public class RequestVO {
 	private int age;
 	private double salary;
 	
+	public RequestVO() {
+		super();
+	}
+	
+	public RequestVO(String name, int age, double salary) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.salary = salary;
+	}
+	
 	public String getName() {
 		return name;
 	}

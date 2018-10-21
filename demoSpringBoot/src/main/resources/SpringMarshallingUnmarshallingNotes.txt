@@ -1,0 +1,34 @@
+Spring Marshalling/UnMarshalling
+
+All these annotations are used on getter or setter of the member variables
+
+@XmlRootElement
+@XmlElement
+@XmlWrappperElement
+@XmlAttribute
+@XmlTransient
+
+-----------------------------------------------------------------------------------------------------------------------
+        xml(string)--> Java Object
+
+        JAXBContext jaxbContext = JAXBContext.newInstance(University.class);
+		Unmarshaller unmarshaller=jaxbContext.createUnmarshaller();
+		
+		StringReader xmlReader = new StringReader(xmlRequest);
+		University university = (University) unmarshaller.unmarshal(xmlReader);
+		
+		return university;
+		
+-----------------------------------------------------------------------------------------------------------------------	
+		Java Object -- > xml(string)
+		
+		JAXBContext jaxbContext = JAXBContext.newInstance(University.class);
+		Marshaller marshaller=jaxbContext.createMarshaller();
+		
+		StringWriter xmlWriter = new StringWriter();
+		marshaller.marshal(university,xmlWriter);
+		
+		String xmlResponse=xmlWriter.toString();
+		return xmlResponse;
+		
+-----------------------------------------------------------------------------------------------------------------------

@@ -1,6 +1,13 @@
 package com.vzw.controller;
 
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +21,7 @@ import com.vzw.vo.Employee;
 import com.vzw.vo.JpaResponseVO;
 import com.vzw.vo.RequestVO;
 import com.vzw.vo.ResponseVO;
+import com.vzw.vo.University;
 import com.vzw.beans.SampleBean;
 
 @RestController
@@ -81,6 +89,29 @@ public class RestApiController {
 		System.out.println("View Entity");
 		List<Employee> response = jpaService.addCallNamedJDBCTempalate(emp);
 		return response;
+	}
+	
+	@RequestMapping(value = "/unmarshallingExample", method = RequestMethod.POST)
+	public @ResponseBody University unmarshallingExample(@RequestBody String xmlRequest) throws JAXBException{
+		
+		JAXBContext jaxbContext = JAXBContext.newInstance(University.class);
+		Unmarshaller unmarshaller=jaxbContext.createUnmarshaller();
+		
+		StringReader xmlReader = new StringReader(xmlRequest);
+		University university = (University) unmarshaller.unmarshal(xmlReader);
+		
+		return university;
+	}
+	
+	@RequestMapping(value = "/marshallingExample", method = RequestMethod.POST , produces="application/xml" , consumes ="application/json")
+	public @ResponseBody String marshallingExample(@RequestBody University university) throws JAXBException{
+		
+		JAXBContext jaxbContext = JAXBContext.newInstance(University.class);
+		Marshaller marshaller=jaxbContext.createMarshaller();
+		StringWriter xmlWriter = new StringWriter();
+		marshaller.marshal(university,xmlWriter);
+		String xmlResponse=xmlWriter.toString();
+		return xmlResponse;
 	}
 	
 	

@@ -1,6 +1,15 @@
 function myFunction(p){
 	console.log("MyJavaScript.js : inside JS Function : myFunction")
-	document.getElementById("valueBox").value=p*p;
+	//document.getElementById("valueBox").value=p*p;
+	console.log(p)
+}
+
+function mySum(){
+	console.log("inside JS Function : mySum")
+	var a = document.getElementById("num1").value;
+	var b = document.getElementById("num2").value;
+    var c =a+b;
+    document.getElementById("sum").value=c;
 }
 
 function makeAjaxCall(){

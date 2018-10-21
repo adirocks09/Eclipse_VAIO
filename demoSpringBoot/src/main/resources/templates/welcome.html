@@ -20,7 +20,7 @@
 			<h2>
 				<span th:text="'Message: ' + ${message}"></span>
 			</h2>
-			<button onClick="myFunction(5)">Set Value</button>
+			<button onClick="myFunction('xyz')">Set Value</button>
 			<input id="valueBox" value=""/>
 			<br/><br/>
 		</div>
@@ -48,14 +48,18 @@
 <!-- 		both the form has action sum which hits the sum method in ViewController.java -->
 		
 		<form action ="/sum" method="post">
-			 1st Number:  <input type="text"  name="num1"  value=""> <br/><br/>
-		     2nd Number:  <input type="text"  name="num2"  value=""> <br/><br/>
+			 1st Number:  <input id ="num1" type="text"  name="num1"  value=""> <br/><br/>
+		     2nd Number:  <input id ="num2" type="text"  name="num2"  value=""> <br/><br/>
+		     Sum = <input id ="sum" type="text" value=""> <br/><br/>
+		     <input type="button" value="Call Javascrip ADD" onClick="mySum()"><br/><br/>
 		     <input type="submit" value="Http POST Addition"><br/><br/>
 		</form>
 		
 		<form action ="/sum" method="get">
-		     1st Number:  <input type="text"  name="num1"  value=""> <br/><br/>
-		     2nd Number:  <input type="text"  name="num2"  value=""> <br/><br/>
+		     1st Number:  <input id ="num1" type="text"  name="num1"  value=""> <br/><br/>
+		     2nd Number:  <input id ="num2" type="text"  name="num2"  value=""> <br/><br/>
+		      Sum = <input id ="sum" type="text" value=""> <br/><br/>
+		     <input type="button" value="Call Javascrip ADD" onClick="mySum()"><br/><br/>
 		     <input type="submit" value="Http GET Addition"><br/><br/>
 		</form>
 		
