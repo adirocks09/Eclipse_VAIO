@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vzw.vo.RequestVO;
@@ -14,7 +15,7 @@ import com.vzw.vo.RequestVO;
 @CrossOrigin(origins = "http://localhost:7200")
 public class AngularController {
 
-	@RequestMapping("/angularSpringboot/getList")
+	@RequestMapping(value="/angularSpringboot/getList",method=RequestMethod.GET)
 	public @ResponseBody List<RequestVO> getListForAngularApplication() {
 		
 		List<RequestVO> responseList = new ArrayList<RequestVO>();

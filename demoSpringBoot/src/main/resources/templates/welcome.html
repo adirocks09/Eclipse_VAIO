@@ -47,19 +47,19 @@
 <!-- 		The server side code is same for both the methods -->
 <!-- 		both the form has action sum which hits the sum method in ViewController.java -->
 		
-		<form action ="/sum" method="post">
+		<form action ="/sumPOST" method="post">
 			 1st Number:  <input id ="num1" type="text"  name="num1"  value=""> <br/><br/>
 		     2nd Number:  <input id ="num2" type="text"  name="num2"  value=""> <br/><br/>
-		     Sum = <input id ="sum" type="text" value=""> <br/><br/>
-		     <input type="button" value="Call Javascrip ADD" onClick="mySum()"><br/><br/>
+		     Sum = <input id ="sum1" type="text" value=""> <br/><br/>
+		     <input type="button" value="Call Javascrip ADD" onClick="mySumPOST()"><br/><br/>
 		     <input type="submit" value="Http POST Addition"><br/><br/>
 		</form>
 		
-		<form action ="/sum" method="get">
-		     1st Number:  <input id ="num1" type="text"  name="num1"  value=""> <br/><br/>
-		     2nd Number:  <input id ="num2" type="text"  name="num2"  value=""> <br/><br/>
-		      Sum = <input id ="sum" type="text" value=""> <br/><br/>
-		     <input type="button" value="Call Javascrip ADD" onClick="mySum()"><br/><br/>
+		<form action ="/sumGET" method="get">
+		     1st Number:  <input id ="num3" type="text"  name="num3"  value=""> <br/><br/>
+		     2nd Number:  <input id ="num4" type="text"  name="num4"  value=""> <br/><br/>
+		      Sum = <input id ="sum2" type="text" value=""> <br/><br/>
+		     <input type="button" value="Call Javascrip ADD" onClick="mySumGET()"><br/><br/>
 		     <input type="submit" value="Http GET Addition"><br/><br/>
 		</form>
 		

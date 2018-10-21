@@ -3,6 +3,7 @@ package com.vzw.controller;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -10,6 +11,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +29,7 @@ import com.vzw.beans.SampleBean;
 @RestController
 @RequestMapping("/api")
 public class RestApiController {
-
+	
 	@Autowired
 	private RequestVO autowiredRequestVO; // Autowiring creates instance of the class
 	
@@ -43,7 +45,7 @@ public class RestApiController {
 	@Autowired
 	private JpaService jpaService;
 	
-	@RequestMapping("/hello")
+	@RequestMapping(value="/hello", method = RequestMethod.GET)
 	public String greet(){
 		System.out.println(autowiredRequestVO.toString()); //Works FIne!!!!....because of Autowiring , An instance is created and it doesnt give null pointer exception
 		System.out.println(objectRequestVO.toString());
