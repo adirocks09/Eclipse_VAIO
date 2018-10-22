@@ -12,8 +12,9 @@ public class NamedEmployeePreparedStatementCallBack implements PreparedStatement
 
 	@Override
 	public Integer doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
-		System.out.println(ps.executeUpdate()+" Employee Added Succesfully");
-		return ps.executeUpdate();
+		int count = ps.executeUpdate();
+		System.out.println(count +"  employee Added Succesfully");
+		return count;
 	}
 
 }

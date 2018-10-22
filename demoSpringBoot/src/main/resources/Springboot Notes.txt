@@ -1,0 +1,31 @@
+When we are using Thymleaf View Resolver and
+       when we want to return String Object instead of a tempalate
+  
+  **we either put the RequestMapping method in a contoller class annotated with @RestController or 
+  **we define returnType of that method as @ResponseBody String in controller class annotated with @Controller
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+application.properties can be used for spring defined properties and for User Defined properties also
+Be careful about not including extra space while providing property name inside @Value annotation in java class and
+while defining the property in application.property file
+
+For eg:
+
+##application.properties
+welcome.message=Hello People from Aditya Anand
+ 
+## Java Class
+
+@Value("${welcome.message:Hello World}") --> User Defined Property
+private String customMessage; --> This works fine and value of "customMessage" is injected from "welcome.message" in application.properties
+
+@Value("${welcome.message : Hello World}") --> User Defined Property
+private String customMessage; --> This DOES NOT work because of an extra space given after the property name inside @Value annotation
+                                  Value of "customMessage" is taken as provided default value i.e. " Hello World"
+
+		
+
+
+
+

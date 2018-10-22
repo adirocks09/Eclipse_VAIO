@@ -8,20 +8,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 
 @Controller
+//@PropertySource("classpath:my-custom.properties")
 public class ViewController {
 	
-		@Value("${welcome.message}")	   // inject via application.properties
-		private String message = "Hello World";
+	   // Properties can be directly injected from application.properties
+
+	    @Value("${spring.datasource.url}")	 // Spring Defined Properties  
+	    private String jdbcURL;
+	    
+		@Value("${welcome.message:Hello World}")	// User Defined Properties
+		private String customMessage;
 		
+		
+		// Returns thymleaf tempalate : welcome.html
 		@RequestMapping(value="/welcome", method = RequestMethod.GET)
 		public String welcome(Map<String, Object> model) {
-			model.put("message", this.message);
-			return "welcome";
+			model.put("message", this.customMessage);
+			System.out.println(jdbcURL);
+			System.out.println(customMessage);
+			return "welcome";  
+		}
+		
+		// Returns String Object : "welcome" as String Object
+		@RequestMapping(value="/welcome2", method = RequestMethod.GET)
+		public @ResponseBody String welcome2(Map<String, Object> model) {
+			model.put("message", this.customMessage);
+			System.out.println(jdbcURL);
+			System.out.println(customMessage);
+			return "welcome";   
 		}
 		
 

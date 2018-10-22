@@ -12,6 +12,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +28,7 @@ import com.vzw.vo.University;
 import com.vzw.beans.SampleBean;
 
 @RestController
+//@Controller 
 @RequestMapping("/api")
 public class RestApiController {
 	
@@ -45,13 +47,24 @@ public class RestApiController {
 	@Autowired
 	private JpaService jpaService;
 	
+	//This method returns String Object and not looks for a thymleaf tempalate
+    //beacause we have annotated the controller class with @RestController and not @Controller
 	@RequestMapping(value="/hello", method = RequestMethod.GET)
-	public String greet(){
+	public String greet(){ 
+		
 		System.out.println(autowiredRequestVO.toString()); //Works FIne!!!!....because of Autowiring , An instance is created and it doesnt give null pointer exception
 		System.out.println(objectRequestVO.toString());
 		//System.out.println(requestVO.toString());//Gives Null Pointer Exception
 		return "Hello world from Server side";
 	}
+	
+	// When @Controller is used on Controller Class
+	/*
+	@RequestMapping(value="/hello", method = RequestMethod.GET)
+	public @ResponseBody String greet(){ 
+		return "Hello world from Server side";
+	}
+	*/
 	
 	@RequestMapping(value = "/viewResponse", method = RequestMethod.POST)
 	public @ResponseBody ResponseVO content(@RequestBody RequestVO request){
